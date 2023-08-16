@@ -23,11 +23,18 @@ public class Grid {
         return dp[m - 1][n - 1];
     }
 
-    public static int countPathRecursive(){
-        return 0;
+    public static int countPathRecursive(int m, int n){
+        if (m==1 || n ==1){
+            return 1;
+        }
+        int pathsRight = countPathRecursive(m - 1, n);
+        int pathsDown = countPathRecursive(m, n - 1);
+
+        return pathsRight + pathsDown;
     }
 
     public static void main(String[] args) {
-        System.out.println(countPathsLoop(3,3));
+        System.out.println(countPathsLoop(1000,1000));
+        System.out.println(countPathRecursive(1000,1000));
     }
 }
